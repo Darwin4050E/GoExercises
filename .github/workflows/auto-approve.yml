@@ -1,0 +1,25 @@
+name: Auto Approve and Merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Auto Approve
+        uses: lekman/auto-approve-action@v1
+        with:
+          github-token: ${{ secrets.CODE_OWNER_TOKEN }}
+          allowed-authors: "app/exercism-solutions-syncer"
+          label-match-mode: "none"
+
+      - name: Auto Merge
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.CODE_OWNER_TOKEN }}

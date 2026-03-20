@@ -10,7 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+        
+      - name: Debug PR Author
+        run: echo "The author is ${{ github.event.pull_request.user.login }}"
+        
       - name: Auto Approve
         uses: lekman/auto-approve-action@v1
         with:

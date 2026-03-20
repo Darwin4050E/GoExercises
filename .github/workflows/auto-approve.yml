@@ -15,7 +15,7 @@ jobs:
         uses: lekman/auto-approve-action@v1
         with:
           github-token: ${{ secrets.CODE_OWNER_TOKEN }}
-          allowed-authors: "app/exercism-solutions-syncer"
+          allowed-authors: "exercism-solutions-syncer[bot]"
           label-match-mode: "none"
 
       - name: Auto Merge

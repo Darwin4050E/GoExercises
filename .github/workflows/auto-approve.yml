@@ -11,14 +11,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Debug PR Author
-        run: echo "The author is ${{ github.event.pull_request.user.login }}"
-        
       - name: Auto Approve
         uses: lekman/auto-approve-action@v1
         with:
           github-token: ${{ secrets.CODE_OWNER_TOKEN }}
-          allowed-authors: "app/exercism-solutions-syncer[bot]"
+          allowed-authors: "app/exercism-solutions-syncer"
           label-match-mode: "none"
 
       - name: Auto Merge

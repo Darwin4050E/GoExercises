@@ -11,6 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Debug author
+        run: echo "${{ github.event.pull_request.user.login }}"
+        
       - name: Auto Approve
         uses: lekman/auto-approve-action@v1
         with:
